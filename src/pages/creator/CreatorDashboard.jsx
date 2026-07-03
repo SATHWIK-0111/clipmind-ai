@@ -2,8 +2,10 @@ import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/DashboardNavbar";
 
 import StatCard from "../../components/StatCard";
-import RecentUploads from "../../components/RecentUploads";
+import MyVideos from "../../components/MyVideos";
 import ProcessingStatus from "../../components/ProcessingStatus";
+import Transcript from "./Transcript";
+import MyVideosList from "../../components/MyVideos";
 
 function CreatorDashboard() {
 
@@ -53,7 +55,7 @@ function CreatorDashboard() {
 
           </div>
 
-          <RecentUploads />
+          <MyVideosList />
 
           <ProcessingStatus />
 

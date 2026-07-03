@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import {
   FaHome,
   FaUpload,
-  FaFileAlt,
-  FaClipboardList,
-  FaChartBar,
+  FaVideo,
   FaUser,
   FaSignOutAlt,
 } from "react-icons/fa";
@@ -26,32 +24,14 @@ function Sidebar() {
         </li>
 
         <li>
-          <Link to="/upload">
+          <Link to="/upload-video">
             <FaUpload /> Upload Video
           </Link>
         </li>
 
         <li>
-          <Link to="#">
-            <FaFileAlt /> Transcript
-          </Link>
-        </li>
-
-        <li>
-          <Link to="#">
-            <FaClipboardList /> Summary
-          </Link>
-        </li>
-
-        <li>
-          <Link to="#">
-            <FaChartBar /> Analytics
-          </Link>
-        </li>
-
-        <li>
-          <Link to="#">
-            <FaUser /> Profile
+          <Link to="/creator/myvideos">
+            <FaVideo /> Videos
           </Link>
         </li>
 
