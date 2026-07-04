@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+python-dotenv
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+motor
+pymongo
+alembic
+openai-whisper
+google-generativeai
+opencv-python
+ffmpeg-python
+moviepy
