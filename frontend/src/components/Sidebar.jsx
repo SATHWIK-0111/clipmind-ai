@@ -16,23 +16,95 @@ function Sidebar({ role = "creator" }) {
 
     creator: [
       { name: "Dashboard", icon: <FaHome />, path: "/creator-dashboard" },
-      { name: "Upload Video", icon: <FaUpload />, path: "/upload-video" },
+      { name: "Upload Video", icon: <FaUpload />, path: "/upload-content" },
       { name: "My Videos", icon: <FaVideo />, path: "/creator/videos" },
     ],
 
     educator: [
-      { name: "Dashboard", icon: <FaHome />, path: "/educator-dashboard" },
-      { name: "Courses", icon: <FaBook />, path: "#" },
-      { name: "Students", icon: <FaUsers />, path: "#" },
-      { name: "Analytics", icon: <FaChartBar />, path: "#" },
-    ],
 
-    learner: [
-      { name: "Dashboard", icon: <FaHome />, path: "/learner-dashboard" },
-      { name: "My Courses", icon: <FaBook />, path: "#" },
-      { name: "Bookmarks", icon: <FaVideo />, path: "#" },
-      { name: "Progress", icon: <FaChartBar />, path: "#" },
-    ],
+{
+name:"Dashboard",
+icon:<FaHome/>,
+path:"/educator-dashboard"
+},
+
+{
+name:"Create Course",
+icon:<FaBook/>,
+path:"/educator/create-course"
+},
+
+{
+name:"View Courses",
+icon:<FaBook/>,
+path:"/educator/courses"
+},
+
+{
+name:"Students",
+icon:<FaUsers/>,
+path:"/educator/students"
+},
+
+{
+name:"Analytics",
+icon:<FaChartBar/>,
+path:"/educator/analytics"
+},
+
+{
+name:"Profile",
+icon:<FaUser/>,
+path:"/educator/profile"
+}
+
+],
+
+    educator: [
+
+  {
+    name: "Dashboard",
+    icon: <FaHome />,
+    path: "/educator-dashboard"
+  },
+
+  {
+    name: "Create Course",
+    icon: <FaBook />,
+    path: "/educator/create-course"
+  },
+
+  {
+    name: "View Courses",
+    icon: <FaBook />,
+    path: "/educator/courses"
+  },
+
+  {
+    name: "Upload Lecture",
+    icon: <FaUpload />,
+    path: "/educator/upload-lecture"
+  },
+
+  {
+    name: "Students",
+    icon: <FaUsers />,
+    path: "/educator/students"
+  },
+
+  {
+    name: "Analytics",
+    icon: <FaChartBar />,
+    path: "/educator/analytics"
+  },
+
+  {
+    name: "Profile",
+    icon: <FaUser />,
+    path: "/educator/profile"
+  }
+
+],
 
     admin: [
       { name: "Dashboard", icon: <FaHome />, path: "/admin-dashboard" },
@@ -75,17 +147,26 @@ function Sidebar({ role = "creator" }) {
 
         <li>
 
-          <Link to="/">
+  <button
+    className="logout-btn"
+    onClick={() => {
 
-            <FaSignOutAlt />
+      localStorage.clear();
 
-            {" "}
+      window.location.href="/";
 
-            Logout
+    }}
+  >
 
-          </Link>
+    <FaSignOutAlt />
 
-        </li>
+    {" "}
+
+    Logout
+
+  </button>
+
+</li>
 
       </ul>
 

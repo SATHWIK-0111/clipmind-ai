@@ -1,69 +1,55 @@
-import Sidebar from "../../components/Sidebar";
-import Navbar from "../../components/DashboardNavbar";
-
+import DashboardLayout from "../../components/DashboardLayout";
 import StatCard from "../../components/StatCard";
-
+import MyVideos from "../../components/MyVideos";
 import ProcessingStatus from "../../components/ProcessingStatus";
-
-import RecentUploads from "../../components/MyVideos";
 
 function CreatorDashboard() {
 
   return (
 
-    <div className="dashboard">
+    <DashboardLayout role="creator">
 
-      <Sidebar role="creator" />
+      <h1>Welcome, Content Creator 👋</h1>
 
-      <div className="dashboard-content">
+      <p>
 
-        <Navbar />
+        Manage your uploaded videos and AI-generated results.
 
-        <div className="dashboard-body">
+      </p>
 
-          <h1>Welcome, Content Creator 👋</h1>
+      <div className="stats-grid">
 
-          <p>
-            Manage your uploaded videos and AI-generated results.
-          </p>
+        <StatCard
+          title="Videos"
+          value="24"
+          color="#2563eb"
+        />
 
-          <div className="stats-grid">
+        <StatCard
+          title="Summaries"
+          value="20"
+          color="#16a34a"
+        />
 
-            <StatCard
-              title="Videos"
-              value="24"
-              color="#2563eb"
-            />
+        <StatCard
+          title="Transcripts"
+          value="24"
+          color="#9333ea"
+        />
 
-            <StatCard
-              title="Summaries"
-              value="20"
-              color="#16a34a"
-            />
-
-            <StatCard
-              title="Transcripts"
-              value="24"
-              color="#9333ea"
-            />
-
-            <StatCard
-              title="Storage"
-              value="2.3 GB"
-              color="#f97316"
-            />
-
-          </div>
-
-          <RecentUploads />
-
-          <ProcessingStatus />
-
-        </div>
+        <StatCard
+          title="Storage"
+          value="2.3 GB"
+          color="#f97316"
+        />
 
       </div>
 
-    </div>
+      <MyVideos />
+
+      <ProcessingStatus />
+
+    </DashboardLayout>
 
   );
 

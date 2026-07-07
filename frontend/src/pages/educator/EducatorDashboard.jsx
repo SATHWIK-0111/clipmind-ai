@@ -1,83 +1,124 @@
-import Sidebar from "../../components/Sidebar";
-import DashboardNavbar from "../../components/DashboardNavbar";
+import { useEffect, useState } from "react";
+
+import DashboardLayout from "../../components/DashboardLayout";
 import StatCard from "../../components/StatCard";
 
+import api from "../../api/axios";
+
 function EducatorDashboard() {
+
+  const [dashboard, setDashboard] = useState({
+
+    videos: 0,
+
+    creators: 0,
+
+    educators: 0,
+
+    learners: 0,
+
+  });
+
+  useEffect(() => {
+
+    fetchDashboard();
+
+  }, []);
+
+  const fetchDashboard = async () => {
+
+    try {
+
+      const res = await api.get("/educator/dashboard");
+
+      setDashboard(res.data);
+
+    }
+
+    catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
   return (
-    <div className="dashboard">
 
-      <Sidebar role="educator" />
+    <DashboardLayout role="educator">
 
-      <div className="dashboard-content">
+      <h1>Welcome, Educator 👋</h1>
 
-        <DashboardNavbar />
+      <p>
 
-        <div className="dashboard-body">
+        Manage your courses and monitor student progress.
 
-          <h1>Welcome, Educator 👋</h1>
+      </p>
 
-          <p>
-            Manage your courses and monitor student progress.
-          </p>
+      <div className="stats-grid">
 
-          <div className="stats-grid">
+        <StatCard
+          title="Videos"
+          value={dashboard.videos}
+          color="#2563eb"
+        />
 
-            <StatCard
-              title="Courses"
-              value="12"
-              color="#2563eb"
-            />
+        <StatCard
+          title="Creators"
+          value={dashboard.creators}
+          color="#16a34a"
+        />
 
-            <StatCard
-              title="Students"
-              value="248"
-              color="#16a34a"
-            />
+        <StatCard
+          title="Educators"
+          value={dashboard.educators}
+          color="#9333ea"
+        />
 
-            <StatCard
-              title="Videos"
-              value="57"
-              color="#9333ea"
-            />
-
-            <StatCard
-              title="Completion"
-              value="91%"
-              color="#f97316"
-            />
-
-          </div>
-
-          <div className="summary-card">
-
-            <h2>Recent Courses</h2>
-
-            <ul>
-              <li>Artificial Intelligence</li>
-              <li>Machine Learning</li>
-              <li>Deep Learning</li>
-            </ul>
-
-          </div>
-
-          <div className="summary-card">
-
-            <h2>Student Progress</h2>
-
-            <ul>
-              <li>John - 85%</li>
-              <li>Rahul - 72%</li>
-              <li>Sathwik - 98%</li>
-            </ul>
-
-          </div>
-
-        </div>
+        <StatCard
+          title="Learners"
+          value={dashboard.learners}
+          color="#f97316"
+        />
 
       </div>
 
-    </div>
+      <div className="summary-card">
+
+        <h2>Recent Courses</h2>
+
+        <ul>
+
+          <li>Artificial Intelligence</li>
+
+          <li>Machine Learning</li>
+
+          <li>Deep Learning</li>
+
+        </ul>
+
+      </div>
+
+      <div className="summary-card">
+
+        <h2>Student Progress</h2>
+
+        <ul>
+
+          <li>John - 85%</li>
+
+          <li>Rahul - 72%</li>
+
+          <li>Sathwik - 98%</li>
+
+        </ul>
+
+      </div>
+
+    </DashboardLayout>
+
   );
+
 }
 
 export default EducatorDashboard;

@@ -1,7 +1,64 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 function Login() {
+
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLogin = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+      const res = await api.post("/auth/login", form);
+
+      localStorage.setItem("token", res.data.access_token);
+      localStorage.setItem("role", res.data.role);
+      localStorage.setItem("user_id", res.data.user_id);
+      localStorage.setItem("full_name", res.data.full_name);
+
+      if (res.data.role === "creator") {
+        navigate("/creator-dashboard");
+      }
+
+      else if (res.data.role === "educator") {
+        navigate("/educator-dashboard");
+      }
+
+      else if (res.data.role === "learner") {
+        navigate("/learner-dashboard");
+      }
+
+      else if (res.data.role === "admin") {
+        navigate("/admin-dashboard");
+      }
+
+    }
+
+    catch (err) {
+
+      alert(err.response?.data?.detail || "Login Failed");
+
+    }
+
+  };
+
   return (
+
     <div className="login-container">
 
       <div className="login-left">
@@ -24,22 +81,26 @@ function Login() {
 
           <p>Sign in to your account</p>
 
-          <form>
+          <form onSubmit={handleLogin}>
 
             <input
               type="email"
+              name="email"
               placeholder="Email Address"
+              value={form.email}
+              onChange={handleChange}
             />
 
             <input
               type="password"
+              name="password"
               placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
             />
 
-            <button>
-
+            <button type="submit">
               Login
-
             </button>
 
           </form>
@@ -47,9 +108,7 @@ function Login() {
           <div className="login-links">
 
             <Link to="/register">
-
               Create Account
-
             </Link>
 
           </div>
@@ -59,7 +118,9 @@ function Login() {
       </div>
 
     </div>
+
   );
+
 }
 
 export default Login;

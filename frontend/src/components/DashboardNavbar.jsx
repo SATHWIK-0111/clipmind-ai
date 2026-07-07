@@ -1,19 +1,27 @@
-import { Link } from "react-router-dom";
+function DashboardNavbar() {
 
-function Navbar() {
+  const fullName = localStorage.getItem("full_name");
+
   return (
+
     <div className="top-navbar">
 
       <h2>Dashboard</h2>
 
       <div className="user-info">
 
-        <span>Hello, Sathwik 👋</span>
+        <span>
+
+          Hello, {fullName} 👋
+
+        </span>
 
       </div>
 
     </div>
+
   );
+
 }
 
-export default Navbar;
+export default DashboardNavbar;

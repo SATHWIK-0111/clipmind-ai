@@ -1291,3 +1291,47 @@ border-radius:10px;
 box-shadow:0 3px 10px rgba(0,0,0,.08);
 
 }
+
+.logout-btn{
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.students-table th,
+.students-table td {
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.students-table th {
+  background: #2563eb;
+  color: white;
+}
+
+.students-table tr:hover {
+  background: #f8fafc;
+}
+
+.upload-input,
+.upload-textarea{
+
+width:100%;
+margin:15px 0;
+
+}

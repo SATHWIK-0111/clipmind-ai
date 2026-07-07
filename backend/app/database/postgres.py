@@ -22,3 +22,15 @@ def get_db():
         yield db
     finally:
         db.close()
+        
+from sqlalchemy.orm import Session
+
+def get_db():
+
+    db: Session = SessionLocal()
+
+    try:
+        yield db
+
+    finally:
+        db.close()
